@@ -87,8 +87,7 @@ this is a [link](https://google.com)
             .join(".") as string;
         (async () => {
             const { data } = await fetch(
-                "https://cmt-backend.usersatoshi.repl.cohttps://cmt-backend.usersatoshi.repl.co/contents/" +
-                    id,
+                "https://cmt-backend.usersatoshi.repl.co/contents/" + id,
                 {
                     method: "GET",
                     headers: {
@@ -221,7 +220,7 @@ function EditContent({
             },
         };
         await fetch(
-            "https://cmt-backend.usersatoshi.repl.cohttps://cmt-backend.usersatoshi.repl.co/contents/" +
+            "https://cmt-backend.usersatoshi.repl.co/contents/" +
                 contentData.id,
             {
                 method: "PUT",

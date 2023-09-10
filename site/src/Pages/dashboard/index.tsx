@@ -47,7 +47,7 @@ export default function DashBoard({
                 window.location.href = "/login";
             }
             const { data } = await fetch(
-                "https://cmt-backend.usersatoshi.repl.cohttps://cmt-backend.usersatoshi.repl.co/users/",
+                "https://cmt-backend.usersatoshi.repl.co/users/",
                 {
                     method: "POST",
                     headers: {
@@ -187,7 +187,7 @@ function CreateContent({
             },
         };
         const d = await fetch(
-            "https://cmt-backend.usersatoshi.repl.cohttps://cmt-backend.usersatoshi.repl.co/contents",
+            "https://cmt-backend.usersatoshi.repl.co/contents",
             {
                 method: "POST",
                 headers: {
