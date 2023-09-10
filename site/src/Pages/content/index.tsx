@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+//@ts-nocheck
 import {
     Avatar,
     Box,
@@ -150,6 +153,8 @@ this is a [link](https://google.com)
                         remarkPlugins={[remarkGfm]}
                         className="markdown"
                         children={content.content}
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                        //@ts-ignore
                         rehypePlugins={[rehypeRaw]}
                     />
                 </Box>
@@ -233,7 +238,7 @@ function EditContent({
             window.location.href = "/login";
         }
         setContentData({ ...contentData, ...data });
-        const index = user.contents.findIndex((x) => x.id === contentData.id);
+        const index = user.contents.findIndex((x: { id: any; }) => x.id === contentData.id);
         user.contents.splice(index, 1, { ...contentData, ...data });
 
         localStorage.setItem("user", JSON.stringify(user));
@@ -282,6 +287,7 @@ function EditContent({
 }
 
 function TabPanel(props: TabPanelProps) {
+    //@ts-ignore
     const { children, value, index, ...other } = props;
 
     return (

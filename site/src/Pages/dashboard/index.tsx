@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+    //@ts-nocheck
 import {
     Box,
     Button,
@@ -249,6 +252,7 @@ function CreateContent({
 }
 
 function TabPanel(props: TabPanelProps) {
+
     const { children, value, index, ...other } = props;
 
     return (

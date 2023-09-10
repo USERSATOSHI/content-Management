@@ -5,16 +5,13 @@ import * as React from "react";
 const settings = ["Logout"];
 
 export default function Navbar({ page }: { page: string }) {
-    const [, setAnchorElNav] = React.useState<null | HTMLElement>(null);
+    // const [, _setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
         null,
     );
 
     const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
-    };
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
     };

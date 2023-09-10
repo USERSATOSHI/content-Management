@@ -12,7 +12,7 @@ import "./index.scss";
 
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Register({
     setPage,
