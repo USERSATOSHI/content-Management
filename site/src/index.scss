@@ -1,0 +1,39 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: monospace !important;
+}
+
+html,body,#root {
+  height:100%;
+  width: 100%;
+
+}
+// customize scrollbar
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1e1e24;
+    border-radius: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6649b8;
+    border-radius: 16px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+// customize scrollbar end
+
+
