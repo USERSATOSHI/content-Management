@@ -87,7 +87,7 @@ this is a [link](https://google.com)
             .join(".") as string;
         (async () => {
             const { data } = await fetch(
-                "https://content-management-sepia.vercel.app/https://cmt-backend.usersatoshi.repl.co/contents/" +
+                "https://cmt-backend.usersatoshi.repl.cohttps://cmt-backend.usersatoshi.repl.co/contents/" +
                     id,
                 {
                     method: "GET",
@@ -221,7 +221,7 @@ function EditContent({
             },
         };
         await fetch(
-            "https://content-management-sepia.vercel.app/https://cmt-backend.usersatoshi.repl.co/contents/" +
+            "https://cmt-backend.usersatoshi.repl.cohttps://cmt-backend.usersatoshi.repl.co/contents/" +
                 contentData.id,
             {
                 method: "PUT",
