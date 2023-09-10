@@ -66,7 +66,7 @@ export default function Login({
         setPasswordError("");
 
         const { data } = await fetch(
-            "https://cmt-backend.usersatoshi.repl.co/auth/login",
+            "https://content-management-sepia.vercel.app/https://cmt-backend.usersatoshi.repl.co/auth/login",
             {
                 method: "POST",
                 headers: {

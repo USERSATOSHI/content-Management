@@ -87,7 +87,8 @@ this is a [link](https://google.com)
             .join(".") as string;
         (async () => {
             const { data } = await fetch(
-                "https://cmt-backend.usersatoshi.repl.co/contents/" + id,
+                "https://content-management-sepia.vercel.app/https://cmt-backend.usersatoshi.repl.co/contents/" +
+                    id,
                 {
                     method: "GET",
                     headers: {
@@ -220,7 +221,7 @@ function EditContent({
             },
         };
         await fetch(
-            "https://cmt-backend.usersatoshi.repl.co/contents/" +
+            "https://content-management-sepia.vercel.app/https://cmt-backend.usersatoshi.repl.co/contents/" +
                 contentData.id,
             {
                 method: "PUT",
@@ -238,7 +239,9 @@ function EditContent({
             window.location.href = "/login";
         }
         setContentData({ ...contentData, ...data });
-        const index = user.contents.findIndex((x: { id: any; }) => x.id === contentData.id);
+        const index = user.contents.findIndex(
+            (x: { id: any }) => x.id === contentData.id,
+        );
         user.contents.splice(index, 1, { ...contentData, ...data });
 
         localStorage.setItem("user", JSON.stringify(user));

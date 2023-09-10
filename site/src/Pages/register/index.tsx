@@ -85,7 +85,7 @@ export default function Register({
         setPasswordError("");
 
         const { data } = await fetch(
-            "https://cmt-backend.usersatoshi.repl.co/auth/register",
+            "https://content-management-sepia.vercel.app/https://cmt-backend.usersatoshi.repl.co/auth/register",
             {
                 method: "POST",
                 headers: {

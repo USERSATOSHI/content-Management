@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-    //@ts-nocheck
+//@ts-nocheck
 import {
     Box,
     Button,
@@ -47,7 +47,7 @@ export default function DashBoard({
                 window.location.href = "/login";
             }
             const { data } = await fetch(
-                "https://cmt-backend.usersatoshi.repl.co/users/",
+                "https://content-management-sepia.vercel.app/https://cmt-backend.usersatoshi.repl.co/users/",
                 {
                     method: "POST",
                     headers: {
@@ -187,7 +187,7 @@ function CreateContent({
             },
         };
         const d = await fetch(
-            "https://cmt-backend.usersatoshi.repl.co/contents",
+            "https://content-management-sepia.vercel.app/https://cmt-backend.usersatoshi.repl.co/contents",
             {
                 method: "POST",
                 headers: {
@@ -252,7 +252,6 @@ function CreateContent({
 }
 
 function TabPanel(props: TabPanelProps) {
-
     const { children, value, index, ...other } = props;
 
     return (
