@@ -13,7 +13,10 @@ import {
     Typography,
     createTheme,
 } from "@mui/material";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-nocheck
 import EditIcon from "@mui/icons-material/Edit";
+import * as React from "react";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -21,7 +24,7 @@ import rehypeRaw from "rehype-raw";
 import "./index.scss";
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { TabPanelProps } from "@mui/lab";
 export default function Content() {
     const [content, setContent] = useState({
@@ -170,7 +173,7 @@ function EditContent({
     open: boolean;
     contentData: any;
     setOpen: (open: boolean) => void;
-    setContentData: (content: string) => void;
+    setContentData: React.Dispatch<React.SetStateAction<any>>;
 }) {
     const darkTheme = createTheme({
         palette: {

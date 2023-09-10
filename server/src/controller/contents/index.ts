@@ -29,7 +29,7 @@ const createContent = async ({
     const user = await getUserById(author.id);
 
     await updateUser(author.id, {
-        contents: [...user.contents.map(x => x.id), id],
+        contents: [...user.contents.map((x: { id: any; }) => x.id), id],
     });
     return newContent;
 }

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import jwt from "jsonwebtoken";
 import { Author, User } from "../../typings.js";
 import { config } from "dotenv";

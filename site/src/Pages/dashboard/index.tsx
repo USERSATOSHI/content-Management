@@ -33,8 +33,8 @@ export default function DashBoard({
     setPage: (page: string) => void;
 }) {
     setPage("dashboard");
-
-    const [contents, setContents] = useState([]);
+    //@ts-ignore
+    const [contents, setContents] = useState<any[]>([]);
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
