@@ -1,79 +1,94 @@
-import {ThemeProvider,createTheme, Box, Button, TextField, Typography,FormHelperText } from "@mui/material";
+import {
+    ThemeProvider,
+    createTheme,
+    Box,
+    Button,
+    TextField,
+    Typography,
+    FormHelperText,
+} from "@mui/material";
 import { useState } from "react";
 import "./index.scss";
 
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import { Link } from "react-router-dom";
 
-export default function Login({setPage}: {setPage: (page: string) => void }) {
-    setPage('login');
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('');
-    const [type, setType] = useState('password');
-    const [emailError, setEmailError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
+export default function Login({
+    setPage,
+}: {
+    setPage: (page: string) => void;
+}) {
+    setPage("login");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [type, setType] = useState("password");
+    const [emailError, setEmailError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
 
     const tooglePassword = () => {
-        if (type === 'password') {
-            setType('text');
+        if (type === "password") {
+            setType("text");
         } else {
-            setType('password');
+            setType("password");
         }
-    }
+    };
 
     const isValidEmail = (email: string) => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
+    };
 
     const isValidPassword = (password: string) => {
         return password.length >= 8;
-    }
+    };
 
     const handleLogin = async () => {
-        console.log('handleLogin', email, password);
+        console.log("handleLogin", email, password);
         // check if email is valid
 
-        if(!isValidEmail(email)) {
-            setEmailError('Invalid email');
+        if (!isValidEmail(email)) {
+            setEmailError("Invalid email");
 
-            if(!isValidPassword(password)) {
-                setPasswordError('Invalid password');
+            if (!isValidPassword(password)) {
+                setPasswordError("Invalid password");
             }
 
             return;
         }
 
-        emailError && setEmailError('');
+        emailError && setEmailError("");
 
-        if(!isValidPassword(password)) {
-            setPasswordError('Invalid password');
+        if (!isValidPassword(password)) {
+            setPasswordError("Invalid password");
             return;
         }
 
-        setPasswordError('');
+        setPasswordError("");
 
-        const {data} = await fetch('http://localhost:3000/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+        const { data } = await fetch(
+            "https://cmt-backend.usersatoshi.repl.co/auth/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
             },
-            body: JSON.stringify({email, password})
-        }).then(res => res.json());
+        ).then((res) => res.json());
 
-        console.log('data', data);
+        console.log("data", data);
 
-        if(data) {
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
+        if (data) {
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
         }
 
-        window.location.href = '/';
-    }
+        window.location.href = "/";
+    };
 
     const darkTheme = createTheme({
         palette: {
-            mode: 'dark',
+            mode: "dark",
         },
     });
 
@@ -136,12 +151,15 @@ export default function Login({setPage}: {setPage: (page: string) => void }) {
                     </Button>
                 </div>
                 <div className="actions">
-                <Typography variant="subtitle1" className="register">
-                    Don't have an account? <Link to="/register" className="link">Register</Link>
-                </Typography>
-                <Button variant="contained" onClick={handleLogin}>
-                    Login
-                </Button>
+                    <Typography variant="subtitle1" className="register">
+                        Don't have an account?{" "}
+                        <Link to="/register" className="link">
+                            Register
+                        </Link>
+                    </Typography>
+                    <Button variant="contained" onClick={handleLogin}>
+                        Login
+                    </Button>
                 </div>
             </Box>
         </ThemeProvider>

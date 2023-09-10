@@ -81,7 +81,7 @@ this is a [link](https://google.com)
             .join(".") as string;
         (async () => {
             const { data } = await fetch(
-                "http://localhost:3000/contents/" + id,
+                "https://cmt-backend.usersatoshi.repl.co/contents/" + id,
                 {
                     method: "GET",
                     headers: {
@@ -161,7 +161,6 @@ this is a [link](https://google.com)
     );
 }
 
-
 function EditContent({
     open,
     setOpen,
@@ -212,23 +211,28 @@ function EditContent({
                 username: user.username,
             },
         };
-        await fetch("http://localhost:3000/contents/"+contentData.id, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("token") || "",
+        await fetch(
+            "https://cmt-backend.usersatoshi.repl.co/contents/" +
+                contentData.id,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization:
+                        "Bearer " + localStorage.getItem("token") || "",
+                },
+                body: JSON.stringify(data),
             },
-            body: JSON.stringify(data),
-        });
+        );
         console.log(data);
         // const user = JSON.parse(localStorage.getItem("user") || "{}");
         if (Object.keys(user).length === 0) {
             window.location.href = "/login";
         }
-        setContentData({...contentData, ...data});
-        const index = user.contents.findIndex(x => x.id === contentData.id);
-        user.contents.splice(index, 1, {...contentData, ...data});
-        
+        setContentData({ ...contentData, ...data });
+        const index = user.contents.findIndex((x) => x.id === contentData.id);
+        user.contents.splice(index, 1, { ...contentData, ...data });
+
         localStorage.setItem("user", JSON.stringify(user));
         setOpen(false);
     };

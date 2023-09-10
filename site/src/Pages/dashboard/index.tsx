@@ -43,17 +43,20 @@ export default function DashBoard({
             if (Object.keys(user).length === 0) {
                 window.location.href = "/login";
             }
-            const { data } = await fetch("http://localhost:3000/users/", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization:
-                        "Bearer " + localStorage.getItem("token") || "",
+            const { data } = await fetch(
+                "https://cmt-backend.usersatoshi.repl.co/users/",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization:
+                            "Bearer " + localStorage.getItem("token") || "",
+                    },
+                    body: JSON.stringify({
+                        id: user.id,
+                    }),
                 },
-                body: JSON.stringify({
-                    id: user.id,
-                }),
-            }).then((res) => res.json());
+            ).then((res) => res.json());
 
             setContents(data.contents);
 
@@ -180,14 +183,18 @@ function CreateContent({
                 username: user.username,
             },
         };
-        const d = await fetch("http://localhost:3000/contents", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem("token") || "",
+        const d = await fetch(
+            "https://cmt-backend.usersatoshi.repl.co/contents",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization:
+                        "Bearer " + localStorage.getItem("token") || "",
+                },
+                body: JSON.stringify(data),
             },
-            body: JSON.stringify(data),
-        }).then((res) => res.json());
+        ).then((res) => res.json());
         console.log(data);
         setContents((contents: any[]) => [...contents, d.data]);
         // const user = JSON.parse(localStorage.getItem("user") || "{}");
